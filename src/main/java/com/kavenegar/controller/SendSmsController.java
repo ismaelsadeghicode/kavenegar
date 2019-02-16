@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/service")
@@ -16,7 +17,7 @@ public class SendSmsController {
     private SendSmsService service;
 
     @PostMapping("/send")
-    public SendSmsResponse sendSms(SendSmsRequest request) {
+    public Mono<SendSmsResponse> sendSms(SendSmsRequest request) {
         return service.sendSms(request);
     }
 }
